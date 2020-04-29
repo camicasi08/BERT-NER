@@ -405,7 +405,9 @@ def main():
     label_list = processor.get_labels()
     num_labels = len(label_list) + 1
 
-    tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
+    #tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
+    tokenizer = BertTokenizer.from_pretrained('./model/pytorch', do_lower_case=args.do_lower_case)
+   
 
     train_examples = None
     num_train_optimization_steps = 0
@@ -420,8 +422,10 @@ def main():
         torch.distributed.barrier()  # Make sure only the first process in distributed training will download model & vocab
 
     # Prepare model
-    config = BertConfig.from_pretrained(args.bert_model, num_labels=num_labels, finetuning_task=args.task_name)
-    model = Ner.from_pretrained(args.bert_model,
+    #config = BertConfig.from_pretrained(args.bert_model, num_labels=num_labels, finetuning_task=args.task_name)
+    config = BertConfig.from_pretrained('./model/pytorch', num_labels=num_labels, finetuning_task=args.task_name)
+    model = Ner.from_pretrained('./model/pytorch',
+    #model = Ner.from_pretrained(args.bert_model,
               from_tf = False,
               config = config)
 
