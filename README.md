@@ -15,6 +15,7 @@ Use google BERT to do CoNLL-2003 NER !
 
 -  `python3`
 - `pip3 install -r requirements.txt`
+- Download [Pytorch BETO Weights, config and vocab](https://github.com/dccuchile/beto) and unzip the file in /model/pytorch
 
 # Run
 
